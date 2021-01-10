@@ -3,7 +3,7 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 releases:
   - name: kafka
-    namespace: example
+    namespace: cnm
     chart: bitnami/kafka
     version: 12.5.0
     wait: true
