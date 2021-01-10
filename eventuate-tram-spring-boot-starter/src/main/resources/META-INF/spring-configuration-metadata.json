@@ -1,0 +1,92 @@
+{
+  "groups": [
+    {
+      "name": "activemq",
+      "type": "io.eventuate.tram.spring.boot.properties.ActiveMQConfiguration$ActiveMQProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.ActiveMQConfiguration$ActiveMQProperties"
+    },
+    {
+      "name": "eventuate.database",
+      "type": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$DatabaseProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$DatabaseProperties"
+    },
+    {
+      "name": "eventuate.redis",
+      "type": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$RedisProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$RedisProperties"
+    },
+    {
+      "name": "eventuatelocal.kafka.bootstrap",
+      "type": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Local$KafkaProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Local$KafkaProperties"
+    },
+    {
+      "name": "eventuatelocal.zookeeper.connection",
+      "type": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Local$ZookeeperProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Local$ZookeeperProperties"
+    },
+    {
+      "name": "rabbitmq",
+      "type": "io.eventuate.tram.spring.boot.properties.RabbitMQConfiguration$RabbitMQProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.RabbitMQConfiguration$RabbitMQProperties"
+    },
+    {
+      "name": "rabbitmq.broker",
+      "type": "io.eventuate.tram.spring.boot.properties.RabbitMQConfiguration$RabbitMQProperties$BrokerProperties",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.RabbitMQConfiguration$RabbitMQProperties$BrokerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "activemq.password",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.ActiveMQConfiguration$ActiveMQProperties"
+    },
+    {
+      "name": "activemq.url",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.ActiveMQConfiguration$ActiveMQProperties"
+    },
+    {
+      "name": "activemq.user",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.ActiveMQConfiguration$ActiveMQProperties"
+    },
+    {
+      "name": "eventuate.database.schema",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$DatabaseProperties"
+    },
+    {
+      "name": "eventuate.redis.partitions",
+      "type": "java.lang.Integer",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$RedisProperties"
+    },
+    {
+      "name": "eventuate.redis.servers",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Eventuate$RedisProperties"
+    },
+    {
+      "name": "eventuatelocal.kafka.bootstrap.servers",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Local$KafkaProperties"
+    },
+    {
+      "name": "eventuatelocal.zookeeper.connection.string",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.EventuateIOConfiguration$Local$ZookeeperProperties"
+    },
+    {
+      "name": "rabbitmq.broker.addresses",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.RabbitMQConfiguration$RabbitMQProperties$BrokerProperties"
+    },
+    {
+      "name": "rabbitmq.url",
+      "type": "java.lang.String",
+      "sourceType": "io.eventuate.tram.spring.boot.properties.RabbitMQConfiguration$RabbitMQProperties"
+    }
+  ],
+  "hints": []
+}

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.1</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>io.eventuate.tram.spring.boot</groupId>
+    <artifactId>eventuate-tram-spring-boot-starter</artifactId>
+    <version>0.26.1.RELEASE</version>
+    <name>eventuate-tram-spring-boot-starter</name>
+    <description>Eventuate Tram framework boot starter</description>
+
+    <properties>
+        <java.version>11</java.version>
+        <eventuate-tram-core.version>0.26.1.RELEASE</eventuate-tram-core.version>
+        <eventuate-tram-sagas.version>0.15.2.RELEASE</eventuate-tram-sagas.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-jdbc-kafka</artifactId>
+            <version>${eventuate-tram-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-events</artifactId>
+            <version>${eventuate-tram-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-aggregate-domain-events</artifactId>
+            <version>${eventuate-tram-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.core</groupId>
+            <artifactId>eventuate-tram-spring-optimistic-locking</artifactId>
+            <version>${eventuate-tram-core.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-participant</artifactId>
+            <version>${eventuate-tram-sagas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.eventuate.tram.sagas</groupId>
+            <artifactId>eventuate-tram-sagas-spring-orchestration-simple-dsl</artifactId>
+            <version>${eventuate-tram-sagas.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <repositories>
+        <repository>
+            <id>alibaba</id>
+            <name>maven alibaba</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </repository>
+        <repository>
+            <id>huawei</id>
+            <name>maven huawei</name>
+            <url>https://mirrors.huaweicloud.com/repository/maven</url>
+        </repository>
+        <repository>
+            <id>eventuate</id>
+            <name>maven eventuate</name>
+            <url>https://dl.bintray.com/eventuateio-oss/eventuate-maven-release</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>maven-plugins-alibaba</id>
+            <name>maven plugins alibaba</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>maven-plugins-huawei</id>
+            <name>maven plugins huawei</name>
+            <url>https://mirrors.huaweicloud.com/repository/maven</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+</project>

@@ -1,0 +1,48 @@
+server:
+  port: 8180
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5431}/${DB_NAME:cnm-product-service}?stringtype=unspecified
+    username: postgres
+    password: postgres
+  flyway:
+    schemas:
+      - cnm
+eventuatelocal:
+  zookeeper:
+    connection:
+      string: ${DOCKER_HOST_IP:localhost}:2181
+  kafka:
+    bootstrap:
+      servers: ${DOCKER_HOST_IP:localhost}:29092
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: prometheus, health
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      enabled: true
+      show-components: always
+    prometheus:
+      enabled: true
+
+logging:
+  level:
+    io.eventuate: debug
+    io.eventuate.tram: trace
+    org.springframework.orm.jpa: info
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace

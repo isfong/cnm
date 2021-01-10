@@ -16,7 +16,15 @@
 	<description>Cloud Native Microservices</description>
 
 	<modules>
+		<module>eventuate-tram-spring-boot-starter</module>
 
+		<module>cnm-shared-model</module>
+		<module>cnm-product-service</module>
+		<module>cnm-product-service-sdk</module>
+		<module>cnm-inventory-service</module>
+		<module>cnm-inventory-service-sdk</module>
+		<module>cnm-order-service</module>
+		<module>cnm-order-service-sdk</module>
 	</modules>
 
 	<properties>
@@ -37,26 +45,26 @@
 	<dependencyManagement>
 		<dependencies>
 			<!-- Project -->
-			<!--<dependency>
+			<dependency>
 				<groupId>com.isfong.cnm</groupId>
 				<artifactId>cnm-shared-model</artifactId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.isfong.cnm</groupId>
 				<artifactId>cnm-product-service-sdk</artifactId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.isfong.cnm</groupId>
 				<artifactId>cnm-inventory-service-sdk</artifactId>
-				<version>0.0.1</version>
+				<version>${project.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.isfong.cnm</groupId>
 				<artifactId>cnm-order-service-sdk</artifactId>
-				<version>0.0.1</version>
-			</dependency>-->
+				<version>${project.version}</version>
+			</dependency>
 
 			<!-- Spring -->
 			<dependency>
