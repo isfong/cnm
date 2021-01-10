@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public abstract class OrderSagaCommand implements Command {
     public interface SagaCommandChannel {
-        String order = "com.example.order";
-        String product = "com.example.product";
+        String order = "com.isfong.cnm.order";
+        String product = "com.isfong.cnm.product";
     }
 
     private String orderId;
