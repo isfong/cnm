@@ -1,0 +1,17 @@
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+releases:
+  - name: kafka
+    namespace: example
+    chart: bitnami/kafka
+    version: 12.5.0
+    wait: true
+    values:
+      - persistence:
+#          existingClaim: -
+          storageClass: nfs-client
+      - zookeeper:
+          persistence:
+#            existingClaim: -
+            storageClass: nfs-client

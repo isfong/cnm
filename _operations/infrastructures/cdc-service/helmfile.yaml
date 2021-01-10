@@ -1,0 +1,8 @@
+releases:
+  - name: cdc-service
+    namespace: example
+    chart: charts/cdc-service
+    values:
+      - image:
+          repository: eventuateio/eventuate-cdc-service
+          tag: 0.9.0.RELEASE

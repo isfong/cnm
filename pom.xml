@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.isfong.cnm</groupId>
+	<artifactId>cnm</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<name>cnm</name>
+	<description>Cloud Native Microservices</description>
+
+	<modules>
+
+	</modules>
+
+	<properties>
+		<java.version>11</java.version>
+		<guava.version>30.1-jre</guava.version>
+		<embedded.version>1.86</embedded.version>
+		<cucumber.version>6.9.1</cucumber.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<spring-cloud.version>2020.0.0-M4</spring-cloud.version>
+		<jib-maven-plugin.version>2.7.1</jib-maven-plugin.version>
+		<eventuate-tram.version>0.26.1.RELEASE</eventuate-tram.version>
+		<groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
+		<git-commit-id-plugin.version>4.0.3</git-commit-id-plugin.version>
+		<build-helper-maven-plugin.version>3.2.0</build-helper-maven-plugin.version>
+		<spring-security-oauth2-autoconfigure.version>2.2.11.RELEASE</spring-security-oauth2-autoconfigure.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Project -->
+			<!--<dependency>
+				<groupId>com.isfong.cnm</groupId>
+				<artifactId>cnm-shared-model</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.isfong.cnm</groupId>
+				<artifactId>cnm-product-service-sdk</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.isfong.cnm</groupId>
+				<artifactId>cnm-inventory-service-sdk</artifactId>
+				<version>0.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.isfong.cnm</groupId>
+				<artifactId>cnm-order-service-sdk</artifactId>
+				<version>0.0.1</version>
+			</dependency>-->
+
+			<!-- Spring -->
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.security.oauth.boot</groupId>
+				<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+				<version>${spring-security-oauth2-autoconfigure.version}</version>
+			</dependency>
+
+			<!-- Eventuate -->
+			<dependency>
+				<groupId>io.eventuate.tram.spring.boot</groupId>
+				<artifactId>eventuate-tram-spring-boot-starter</artifactId>
+				<version>${eventuate-tram.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.eventuate.tram.core</groupId>
+				<artifactId>eventuate-tram-events</artifactId>
+				<version>${eventuate-tram.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.eventuate.tram.core</groupId>
+				<artifactId>eventuate-tram-commands</artifactId>
+				<version>${eventuate-tram.version}</version>
+			</dependency>
+
+			<!-- Commons -->
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+
+			<!-- Guava -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<!-- Test Java faker -->
+			<dependency>
+				<groupId>com.github.javafaker</groupId>
+				<artifactId>javafaker</artifactId>
+				<version>1.0.2</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.yaml</groupId>
+						<artifactId>snakeyaml</artifactId>
+					</exclusion>
+				</exclusions>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Test Cucumber -->
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-java</artifactId>
+				<version>${cucumber.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-junit</artifactId>
+				<version>${cucumber.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>io.cucumber</groupId>
+				<artifactId>cucumber-spring</artifactId>
+				<version>${cucumber.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Test rest assured-->
+			<dependency>
+				<groupId>com.jayway.restassured</groupId>
+				<artifactId>rest-assured</artifactId>
+				<version>2.9.0</version>
+				<scope>test</scope>
+			</dependency>
+
+			<!-- Test docker compose -->
+			<dependency>
+				<groupId>com.palantir.docker.compose</groupId>
+				<artifactId>docker-compose-junit-jupiter</artifactId>
+				<version>1.5.0</version>
+				<scope>test</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>alibaba</id>
+			<name>maven alibaba</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+		</repository>
+		<repository>
+			<id>huawei</id>
+			<name>maven huawei</name>
+			<url>https://mirrors.huaweicloud.com/repository/maven</url>
+		</repository>
+		<repository>
+			<id>eventuate</id>
+			<name>maven eventuate</name>
+			<url>https://dl.bintray.com/eventuateio-oss/eventuate-maven-release</url>
+		</repository>
+		<repository>
+			<id>palantir</id>
+			<name>maven palantir</name>
+			<url>https://dl.bintray.com/palantir/releases</url>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-plugins-alibaba</id>
+			<name>maven plugins alibaba</name>
+			<url>https://maven.aliyun.com/repository/public</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>maven-plugins-huawei</id>
+			<name>maven plugins huawei</name>
+			<url>https://mirrors.huaweicloud.com/repository/maven</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>11</source>
+						<target>11</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>com.google.cloud.tools</groupId>
+					<artifactId>jib-maven-plugin</artifactId>
+					<version>${jib-maven-plugin.version}</version>
+					<configuration>
+						<from>
+							<image>registry.bossdream.com/cnm/cnm-jre-11-evn:jre-11.0.6_10-alpine</image>
+						</from>
+						<to>
+							<image>registry.bossdream.com/cnm/${project.artifactId}</image>
+							<tags>
+								<!--suppress MavenModelInspection -->
+								<tag>
+									${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.incrementalVersion}-${git.commit.id.abbrev}
+								</tag>
+							</tags>
+						</to>
+						<allowInsecureRegistries>true</allowInsecureRegistries>
+						<container>
+							<format>OCI</format>
+						</container>
+					</configuration>
+					<executions>
+						<execution>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.gmaven</groupId>
+					<artifactId>groovy-maven-plugin</artifactId>
+					<version>${groovy-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<phase>generate-resources</phase>
+							<goals>
+								<goal>execute</goal>
+							</goals>
+							<configuration>
+								<!--suppress GroovyAssignabilityCheck -->
+								<source>
+									def imageTag = properties[ 'parsedVersion.majorVersion' ] + '.' + properties[ 'parsedVersion.minorVersion' ] + '.' + properties[ 'parsedVersion.incrementalVersion' ] + '-' + properties[ 'git.commit.id.abbrev' ]
+									def file = new File( project.build.directory, 'image_tag.txt' )
+									file.write imageTag
+								</source>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>pl.project13.maven</groupId>
+					<artifactId>git-commit-id-plugin</artifactId>
+					<version>${git-commit-id-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>get-the-git-infos</id>
+							<goals>
+								<goal>revision</goal>
+							</goals>
+							<phase>initialize</phase>
+						</execution>
+					</executions>
+					<configuration>
+						<verbose>false</verbose>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>${build-helper-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>parse-version</id>
+							<goals>
+								<goal>parse-version</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>

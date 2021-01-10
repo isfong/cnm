@@ -1,0 +1,39 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bossdream-vs
+  namespace: bossdream
+spec:
+  hosts:
+    - bossdream.com
+    - www.bossdream.com
+  gateways:
+    - bossdream-gw
+  http:
+    - match:
+        - uri:
+            prefix: /business
+      route:
+        - destination:
+            host: bossdream-business.bossdream.svc.cluster.local
+    - match:
+        - uri:
+            prefix: /commons
+      route:
+        - destination:
+            host: bossdream-commons.bossdream.svc.cluster.local
+    - match:
+        - uri:
+            prefix: /iot
+      route:
+        - destination:
+            host: bossdream-iot.bossdream.svc.cluster.local
+    - match:
+        - uri:
+            prefix: /mall
+      route:
+        - destination:
+            host: bossdream-mall.bossdream.svc.cluster.local
+    - route:
+        - destination:
+            host: ng-bossdream.bossdream.svc.cluster.local

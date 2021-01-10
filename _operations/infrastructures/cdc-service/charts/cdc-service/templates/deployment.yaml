@@ -1,0 +1,129 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "cdc-service.fullname" . }}
+  labels:
+    {{- include "cdc-service.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "cdc-service.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "cdc-service.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "cdc-service.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: {{ .Values.spring.profiles.active | quote }}
+            - name: LOGGING_LEVEL_IO_EVENTUATE
+              value: INFO
+            - name: EVENTUATELOCAL_KAFKA_BOOTSTRAP_SERVERS
+              value: {{ .Values.eventuatelocal.kafka.bootstrap.servers | quote }}
+            - name: EVENTUATELOCAL_ZOOKEEPER_CONNECTION_STRING
+              value: {{ .Values.eventuatelocal.zookeeper.connection.string | quote }}
+            # Product Service
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEPRODUCTSERVICE_TYPE
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineproductservice.type | quote }}
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEPRODUCTSERVICE_READER
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineproductservice.reader | quote }}
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEPRODUCTSERVICE_EVENTUATEDATABASESCHEMA
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineproductservice.eventuatedatabaseschema | quote }}
+            - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_TYPE
+              value: {{ .Values.eventuate.cdc.reader.productservice.type | quote }}
+            - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEURL
+              value: {{ .Values.eventuate.cdc.reader.productservice.datasourceurl | quote }}
+            - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEUSERNAME
+              value: {{ .Values.eventuate.cdc.reader.productservice.datasourceusername | quote }}
+            - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEPASSWORD
+              value: {{ .Values.eventuate.cdc.reader.productservice.datasourcepassword | quote }}
+            - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEDRIVERCLASSNAME
+              value: {{ .Values.eventuate.cdc.reader.productservice.datasourcedriverclassname | quote }}
+            - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_LEADERSHIPLOCKPATH
+              value: {{ .Values.eventuate.cdc.reader.productservice.leadershiplockpath | quote }}
+            # Inventory Service
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEINVENTORYSERVICE_TYPE
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineinventoryservice.type | quote }}
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEINVENTORYSERVICE_READER
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineinventoryservice.reader | quote }}
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEINVENTORYSERVICE_EVENTUATEDATABASESCHEMA
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineinventoryservice.eventuatedatabaseschema | quote }}
+            - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_TYPE
+              value: {{ .Values.eventuate.cdc.reader.inventoryservice.type | quote }}
+            - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEURL
+              value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourceurl | quote }}
+            - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEUSERNAME
+              value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourceusername | quote }}
+            - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEPASSWORD
+              value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourcepassword | quote }}
+            - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEDRIVERCLASSNAME
+              value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourcedriverclassname | quote }}
+            - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_LEADERSHIPLOCKPATH
+              value: {{ .Values.eventuate.cdc.reader.inventoryservice.leadershiplockpath | quote }}
+            # Order Service
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEORDERSERVICE_TYPE
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineorderservice.type | quote }}
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEORDERSERVICE_READER
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineorderservice.reader | quote }}
+            - name: EVENTUATE_CDC_PIPELINE_PIPELINEORDERSERVICE_EVENTUATEDATABASESCHEMA
+              value: {{ .Values.eventuate.cdc.pipeline.pipelineorderservice.eventuatedatabaseschema | quote }}
+            - name: EVENTUATE_CDC_READER_ORDERSERVICE_TYPE
+              value: {{ .Values.eventuate.cdc.reader.orderservice.type | quote }}
+            - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEURL
+              value: {{ .Values.eventuate.cdc.reader.orderservice.datasourceurl | quote }}
+            - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEUSERNAME
+              value: {{ .Values.eventuate.cdc.reader.orderservice.datasourceusername | quote }}
+            - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEPASSWORD
+              value: {{ .Values.eventuate.cdc.reader.orderservice.datasourcepassword | quote }}
+            - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEDRIVERCLASSNAME
+              value: {{ .Values.eventuate.cdc.reader.orderservice.datasourcedriverclassname | quote }}
+            - name: EVENTUATE_CDC_READER_ORDERSERVICE_LEADERSHIPLOCKPATH
+              value: {{ .Values.eventuate.cdc.reader.orderservice.leadershiplockpath | quote }}
+          livenessProbe:
+            httpGet:
+              path: /actuator
+              port: http
+            failureThreshold: 10
+          readinessProbe:
+            httpGet:
+              path: /actuator
+              port: http
+            failureThreshold: 10
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}

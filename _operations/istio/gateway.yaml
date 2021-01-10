@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bossdream-gw
+  namespace: bossdream
+spec:
+  selector:
+    app: istio-ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - bossdream.com
+        - www.bossdream.com
+      tls:
+        httpsRedirect: true # sends 301 redirect for http requests
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - bossdream.com
+        - www.bossdream.com
+      tls:
+        mode: SIMPLE
+        credentialName: tls.k8s.bossdream.com
