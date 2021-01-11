@@ -2,15 +2,15 @@
 ```shell
 $ kubectl create secret generic secret-postgres-product-service-password \
     --namespace=cnm \
-    --from-literal=postgres-product-service-postgresql-password=postgres
+    --from-literal=postgresql-password=postgres
 
 $ kubectl create secret generic secret-postgres-inventory-service-password \
     --namespace=cnm \
-    --from-literal=postgres-inventory-service-postgresql-password=postgres
+    --from-literal=postgresql-password=postgres
 
 $ kubectl create secret generic secret-postgres-order-service-password \
     --namespace=cnm \
-    --from-literal=postgres-order-service-postgresql-password=postgres
+    --from-literal=postgresql-password=postgres
 ```
 
 # Use with postgresql server
