@@ -45,7 +45,7 @@ releases:
           tag: 13.1
       - postgresqlDatabase: cnm-order-service
       - postgresqlUsername: postgres
-      - existingSecret: secret-postgres-inventory-service-password
+      - existingSecret: secret-postgres-order-service-password
       - persistence:
 #          existingClaim: data-postgres-order-service-postgresql-0
           storageClass: nfs-client
