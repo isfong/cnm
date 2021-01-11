@@ -5,35 +5,34 @@ metadata:
   namespace: cnm
 spec:
   hosts:
-    - isfong.com
-    - www.isfong.com
+    - k8s.bossdream.com
   gateways:
-    - cnm-isfong-com-gw
+    - cnm-k8s-bossdream-com-gw
   http:
     - match:
         - uri:
             prefix: /products
       route:
         - destination:
-            host: cnm-product-service.cnm.svc.cluster.local
+            host: cnm-api-gateway-service.cnm.svc.cluster.local
     - match:
         - uri:
             prefix: /categories
       route:
         - destination:
-            host: cnm-product-service.cnm.svc.cluster.local
+            host: cnm-api-gateway-service.cnm.svc.cluster.local
     - match:
         - uri:
             prefix: /inventories
       route:
         - destination:
-            host: cnm-inventory-service.cnm.svc.cluster.local
+            host: cnm-api-gateway-service.cnm.svc.cluster.local
     - match:
         - uri:
             prefix: /orders
       route:
         - destination:
-            host: cnm-order-service.cnm.svc.cluster.local
+            host: cnm-api-gateway-service.cnm.svc.cluster.local
 ## default
 #    - route:
 #        - destination:
