@@ -43,15 +43,12 @@ spec:
             - name: SPRING_APPLICATION_NAME
               value: inventory
             - name: SPRING_DATASOURCE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: secret-postgres-cnm-inventory-service
-                  key: spring_datasource_username
+              value: postgres
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: secret-postgres-cnm-inventory-service
-                  key: spring_datasource_password
+                  name: secret-postgres-inventory-service-password
+                  key: postgresql-password
           livenessProbe:
             httpGet:
               path: /actuator/health/liveness
