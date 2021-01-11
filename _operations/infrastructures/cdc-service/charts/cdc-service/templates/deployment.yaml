@@ -60,7 +60,10 @@ spec:
             - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEUSERNAME
               value: {{ .Values.eventuate.cdc.reader.productservice.datasourceusername | quote }}
             - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEPASSWORD
-              value: {{ .Values.eventuate.cdc.reader.productservice.datasourcepassword | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: secret-postgres-product-service-password
+                  key: postgresql-password
             - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_DATASOURCEDRIVERCLASSNAME
               value: {{ .Values.eventuate.cdc.reader.productservice.datasourcedriverclassname | quote }}
             - name: EVENTUATE_CDC_READER_PRODUCTSERVICE_LEADERSHIPLOCKPATH
@@ -79,7 +82,10 @@ spec:
             - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEUSERNAME
               value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourceusername | quote }}
             - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEPASSWORD
-              value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourcepassword | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: secret-postgres-inventory-service-password
+                  key: postgresql-password
             - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_DATASOURCEDRIVERCLASSNAME
               value: {{ .Values.eventuate.cdc.reader.inventoryservice.datasourcedriverclassname | quote }}
             - name: EVENTUATE_CDC_READER_INVENTORYSERVICE_LEADERSHIPLOCKPATH
@@ -98,7 +104,10 @@ spec:
             - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEUSERNAME
               value: {{ .Values.eventuate.cdc.reader.orderservice.datasourceusername | quote }}
             - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEPASSWORD
-              value: {{ .Values.eventuate.cdc.reader.orderservice.datasourcepassword | quote }}
+              valueFrom:
+                secretKeyRef:
+                  name: secret-postgres-order-service-password
+                  key: postgresql-password
             - name: EVENTUATE_CDC_READER_ORDERSERVICE_DATASOURCEDRIVERCLASSNAME
               value: {{ .Values.eventuate.cdc.reader.orderservice.datasourcedriverclassname | quote }}
             - name: EVENTUATE_CDC_READER_ORDERSERVICE_LEADERSHIPLOCKPATH
