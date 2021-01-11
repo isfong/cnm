@@ -229,7 +229,7 @@
 					<version>${jib-maven-plugin.version}</version>
 					<configuration>
 						<from>
-							<image>registry.bossdream.com/cnm/cnm-jre-11-evn:jre-11.0.6_10-alpine</image>
+							<image>registry.cn-shenzhen.aliyuncs.com/isfong/adoptopenjdk-zh:jre-11.0.6_10-alpine</image>
 						</from>
 						<to>
 							<image>registry.bossdream.com/cnm/${project.artifactId}</image>
