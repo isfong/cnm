@@ -76,6 +76,7 @@ spec:
                     withDockerRegistry( credentialsId: 'registry.bossdream.com.admin', url: 'https://registry.bossdream.com' ) {
                         sh 'mvn clean package -DskipTests'
                         script {
+                            apiGatewayServiceTag = readFile( "cnm-api-gateway-service/target/image_tag.txt" )
                             productServiceTag = readFile( "cnm-product-service/target/image_tag.txt" )
                             inventoryServiceTag = readFile( "cnm-inventory-service/target/image_tag.txt" )
                             orderServiceTag = readFile( "cnm-order-service/target/image_tag.txt" )
@@ -87,6 +88,7 @@ spec:
         stage( 'Deploy' ) {
             environment {
                 CONTAINER_REGISTRY = "registry.bossdream.com"
+                CNM_API_GATEWAY_SERVICE_VERSION = "${ apiGatewayServiceTag }"
                 CNM_PRODUCT_SERVICE_VERSION = "${ productServiceTag }"
                 CNM_INVENTORY_SERVICE_VERSION = "${ inventoryServiceTag }"
                 CNM_ORDER_SERVICE_VERSION = "${ orderServiceTag }"

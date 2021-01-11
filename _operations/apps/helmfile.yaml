@@ -1,4 +1,10 @@
 releases:
+  - name: cnm-api-gateway-service
+    namespace: cnm
+    chart: charts/cnm-api-gateway-service
+    values:
+      - image:
+          tag: {{ env "CNM_API_GATEWAY_SERVICE_VERSION" | default "" }}
   - name: cnm-product-service
     namespace: cnm
     chart: charts/cnm-product-service
