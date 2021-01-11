@@ -1,0 +1,53 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: cnm
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://postgres-${spring.application.name}-service-postgresql.cnm.svc.cluster.local:5432/cnm-${spring.application.name}-service?stringtype=unspecified
+  flyway:
+    schemas:
+      - cnm
+
+eventuatelocal:
+  zookeeper:
+    connection:
+      string: kafka.cnm.svc.cluster.local:9092
+  kafka:
+    bootstrap:
+      servers: kafka-zookeeper.cnm.svc.cluster.local:2181
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      exposure:
+        include: prometheus, health
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+  endpoint:
+    health:
+      enabled: true
+      show-components: always
+    prometheus:
+      enabled: true
+
+logging:
+  level:
+    io.eventuate: debug
+    io.eventuate.tram: trace
+    org.springframework.orm.jpa: info
+    org.hibernate.SQL: debug
+    org.springframework.jdbc.core: debug
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
