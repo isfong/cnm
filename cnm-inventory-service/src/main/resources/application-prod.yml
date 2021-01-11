@@ -20,10 +20,10 @@ spring:
 eventuatelocal:
   zookeeper:
     connection:
-      string: kafka.cnm.svc.cluster.local:9092
+      string: kafka-zookeeper.cnm.svc.cluster.local:2181
   kafka:
     bootstrap:
-      servers: kafka-zookeeper.cnm.svc.cluster.local:2181
+      servers: kafka.cnm.svc.cluster.local:9092
 
 management:
   endpoints:
