@@ -3,7 +3,7 @@ repositories:
     url: https://charts.bitnami.com/bitnami
 releases:
   - name: postgres-product-service
-    namespace: example
+    namespace: cnm
     chart: bitnami/postgresql
     version: 10.2.1
     wait: false
@@ -11,7 +11,7 @@ releases:
       - image:
           repository: registry.cn-shenzhen.aliyuncs.com/isfong/eventuate-tram-sagas-postgres
           tag: 13.1
-      - postgresqlDatabase: example-product-service
+      - postgresqlDatabase: cnm-product-service
       - postgresqlUsername: postgres
       - postgresqlPassword: postgres
       - persistence:
@@ -19,7 +19,7 @@ releases:
           storageClass: nfs-client
 
   - name: postgres-inventory-service
-    namespace: example
+    namespace: cnm
     chart: bitnami/postgresql
     version: 10.2.1
     wait: false
@@ -27,7 +27,7 @@ releases:
       - image:
           repository: registry.cn-shenzhen.aliyuncs.com/isfong/eventuate-tram-sagas-postgres
           tag: 13.1
-      - postgresqlDatabase: example-inventory-service
+      - postgresqlDatabase: cnm-inventory-service
       - postgresqlUsername: postgres
       - postgresqlPassword: postgres
       - persistence:
@@ -35,7 +35,7 @@ releases:
           storageClass: nfs-client
 
   - name: postgres-order-service
-    namespace: example
+    namespace: cnm
     chart: bitnami/postgresql
     version: 10.2.1
     wait: false
@@ -43,7 +43,7 @@ releases:
       - image:
           repository: registry.cn-shenzhen.aliyuncs.com/isfong/eventuate-tram-sagas-postgres
           tag: 13.1
-      - postgresqlDatabase: example-order-service
+      - postgresqlDatabase: cnm-order-service
       - postgresqlUsername: postgres
       - postgresqlPassword: postgres
       - persistence:

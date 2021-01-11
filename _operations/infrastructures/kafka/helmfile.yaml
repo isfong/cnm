@@ -9,9 +9,9 @@ releases:
     wait: true
     values:
       - persistence:
-#          existingClaim: -
+#          existingClaim: data-kafka-0
           storageClass: nfs-client
       - zookeeper:
           persistence:
-#            existingClaim: -
+#            existingClaim: data-kafka-zookeeper-0
             storageClass: nfs-client

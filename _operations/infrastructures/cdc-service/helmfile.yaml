@@ -1,6 +1,6 @@
 releases:
   - name: cdc-service
-    namespace: example
+    namespace: cnm
     chart: charts/cdc-service
     values:
       - image:
