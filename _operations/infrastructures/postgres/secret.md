@@ -1,11 +1,38 @@
-# Create database secrets
+# Create database secrets with postgresql server
 ```shell
-kubectl create secret generic secret-postgres-cnm-order-service \
+$ kubectl create secret generic secret-postgres-product-service-password \
+    --namespace=cnm \
+    --from-literal=postgres-product-service-postgresql-password=postgres
+
+$ kubectl create secret generic secret-postgres-inventory-service-password \
+    --namespace=cnm \
+    --from-literal=postgres-inventory-service-postgresql-password=postgres
+
+$ kubectl create secret generic secret-postgres-order-service-password \
+    --namespace=cnm \
+    --from-literal=postgres-order-service-postgresql-password=postgres
+```
+
+# Use with postgresql server
+```shell
+$ helm install postgres-product-service bitnami/postgresql \
+    --version=10.2.1 \
+    --set postgresqlDatabase=testdb \
+    --set postgresqlUsername=postgres
+    --set existingSecret=secret-postgres-product-service-password
+```
+
+# Create database secrets with app
+```shell
+$ kubectl create secret generic secret-postgresql-cnm-order-service \
+    --namespace=cnm \
+    --from-literal=postgresql-postgres-password=postgres
+$ kubectl create secret generic secret-postgres-cnm-order-service \
     --namespace=cnm \
     --from-literal=spring_datasource_username=postgres \
     --from-literal=spring_datasource_password=postgres
 ```
-# Use
+# Use with app
 ```yaml
 spec:
   template:

@@ -13,7 +13,7 @@ releases:
           tag: 13.1
       - postgresqlDatabase: cnm-product-service
       - postgresqlUsername: postgres
-      - postgresqlPassword: postgres
+      - existingSecret: secret-postgres-product-service-password
       - persistence:
 #          existingClaim: data-postgres-product-service-postgresql-0
           storageClass: nfs-client
@@ -29,7 +29,7 @@ releases:
           tag: 13.1
       - postgresqlDatabase: cnm-inventory-service
       - postgresqlUsername: postgres
-      - postgresqlPassword: postgres
+      - existingSecret: secret-postgres-inventory-service-password
       - persistence:
 #          existingClaim: data-postgres-inventory-service-postgresql-0
           storageClass: nfs-client
@@ -45,7 +45,7 @@ releases:
           tag: 13.1
       - postgresqlDatabase: cnm-order-service
       - postgresqlUsername: postgres
-      - postgresqlPassword: postgres
+      - existingSecret: secret-postgres-inventory-service-password
       - persistence:
 #          existingClaim: data-postgres-order-service-postgresql-0
           storageClass: nfs-client
