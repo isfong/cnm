@@ -109,21 +109,18 @@ eventuate:
         type: postgres-wal
         datasourceurl: jdbc:postgresql://postgres-product-service-postgresql.cnm.svc.cluster.local:5432/cnm-product-service
         datasourceusername: postgres
-        datasourcepassword: postgres
         datasourcedriverclassname: org.postgresql.Driver
         leadershiplockpath: /eventuatelocal/cdc/leader/pipeline/cnm-product-service
       inventoryservice:
         type: postgres-wal
         datasourceurl: jdbc:postgresql://postgres-inventory-service-postgresql.cnm.svc.cluster.local:5432/cnm-inventory-service
         datasourceusername: postgres
-        datasourcepassword: postgres
         datasourcedriverclassname: org.postgresql.Driver
         leadershiplockpath: /eventuatelocal/cdc/leader/pipeline/cnm-inventory-service
       orderservice:
           type: postgres-wal
           datasourceurl: jdbc:postgresql://postgres-order-service-postgresql.cnm.svc.cluster.local:5432/cnm-order-service
           datasourceusername: postgres
-          datasourcepassword: postgres
           datasourcedriverclassname: org.postgresql.Driver
           leadershiplockpath: /eventuatelocal/cdc/leader/pipeline/cnm-order-service
 
