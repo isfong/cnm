@@ -1,39 +1,40 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: bossdream-vs
-  namespace: bossdream
+  name: cnm-isfong-com-vs
+  namespace: cnm
 spec:
   hosts:
-    - bossdream.com
-    - www.bossdream.com
+    - isfong.com
+    - www.isfong.com
   gateways:
-    - bossdream-gw
+    - cnm-isfong-com-gw
   http:
     - match:
         - uri:
-            prefix: /business
+            prefix: /products
       route:
         - destination:
-            host: bossdream-business.bossdream.svc.cluster.local
+            host: cnm-product-service.cnm.svc.cluster.local
     - match:
         - uri:
-            prefix: /commons
+            prefix: /categories
       route:
         - destination:
-            host: bossdream-commons.bossdream.svc.cluster.local
+            host: cnm-product-service.cnm.svc.cluster.local
     - match:
         - uri:
-            prefix: /iot
+            prefix: /inventories
       route:
         - destination:
-            host: bossdream-iot.bossdream.svc.cluster.local
+            host: cnm-inventory-service.cnm.svc.cluster.local
     - match:
         - uri:
-            prefix: /mall
+            prefix: /orders
       route:
         - destination:
-            host: bossdream-mall.bossdream.svc.cluster.local
-    - route:
-        - destination:
-            host: ng-bossdream.bossdream.svc.cluster.local
+            host: cnm-order-service.cnm.svc.cluster.local
+## default
+#    - route:
+#        - destination:
+#            host: ng-bossdream.bossdream.svc.cluster.local

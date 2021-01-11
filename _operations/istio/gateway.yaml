@@ -1,8 +1,8 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: bossdream-gw
-  namespace: bossdream
+  name: cnm-isfong-com-gw
+  namespace: cnm
 spec:
   selector:
     app: istio-ingressgateway
@@ -12,8 +12,8 @@ spec:
         name: http
         protocol: HTTP
       hosts:
-        - bossdream.com
-        - www.bossdream.com
+        - isfong.com
+        - www.isfong.com
       tls:
         httpsRedirect: true # sends 301 redirect for http requests
     - port:
@@ -21,8 +21,8 @@ spec:
         name: https
         protocol: HTTPS
       hosts:
-        - bossdream.com
-        - www.bossdream.com
+        - isfong.com
+        - www.isfong.com
       tls:
         mode: SIMPLE
-        credentialName: tls.k8s.bossdream.com
+        credentialName: secret-tls-cnm-isfong.com
