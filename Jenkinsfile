@@ -69,22 +69,16 @@ spec:
     stages {
         stage( 'Build' ) {
             steps {
-                sh 'mkdir -p ../conf'
-                git credentialsId: 'code.aliyun.com.isfong', url: 'https://code.aliyun.com/isfong/bossdream-prod.git'
-                sh 'cp -rp bossdream* ../conf/'
-                git credentialsId: 'code.aliyun.com.yhhlwkj', url: 'https://code.aliyun.com/yuhaoltd/bossdream.git'
-                sh 'cp -rp ../conf/bossdream* ./'
-                sh 'cat bossdream-commons/src/main/resources/application-prod.yml'
+                git credentialsId: 'gitee.com.isfong', url: 'https://gitee.com/isfong/cnm.git'
                 container( 'maven' ) {
                     sh 'mappingRegistry=$(cat /parent-hosts | grep registry) && echo "${mappingRegistry}" >> /etc/hosts'
                     sh 'cat /etc/hosts'
                     withDockerRegistry( credentialsId: 'registry.bossdream.com.admin', url: 'https://registry.bossdream.com' ) {
                         sh 'mvn clean package -DskipTests'
                         script {
-                            businessImageTag = readFile( "bossdream-business/target/image_tag.txt" )
-                            commonsImageTag = readFile( "bossdream-commons/target/image_tag.txt" )
-                            iotImageTag = readFile( "bossdream-iot/target/image_tag.txt" )
-                            mallImageTag = readFile( "bossdream-mall/target/image_tag.txt" )
+                            productServiceTag = readFile( "cnm-product-service/target/image_tag.txt" )
+                            inventoryServiceTag = readFile( "cnm-inventory-service/target/image_tag.txt" )
+                            orderServiceTag = readFile( "cnm-order-service/target/image_tag.txt" )
                         }
                     }
                 }
@@ -93,15 +87,14 @@ spec:
         stage( 'Deploy' ) {
             environment {
                 CONTAINER_REGISTRY = "registry.bossdream.com"
-                BUSINESS_VERSION = "${ businessImageTag }"
-                COMMONS_VERSION = "${ commonsImageTag }"
-                IOT_VERSION = "${ iotImageTag }"
-                MALL_VERSION = "${ mallImageTag }"
+                CNM_PRODUCT_SERVICE_VERSION = "${ productServiceTag }"
+                CNM_INVENTORY_SERVICE_VERSION = "${ inventoryServiceTag }"
+                CNM_ORDER_SERVICE_VERSION = "${ orderServiceTag }"
             }
             steps {
-                git credentialsId: 'code.aliyun.com.yhhlwkj', url: 'https://code.aliyun.com/yuhaoltd/bossdream.git'
+                git credentialsId: 'gitee.com.isfong', url: 'https://gitee.com/isfong/cnm.git'
                 container( 'helmfile' ) {
-                    sh 'cd k8s/apps && helmfile apply'
+                    sh 'cd _operations/apps && helmfile apply'
                 }
             }
         }
