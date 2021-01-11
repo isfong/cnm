@@ -1,0 +1,26 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  cloud:
+    gateway:
+      routes:
+        - id: product-service
+          uri: http://localhost:8180
+          predicates:
+            - Path=/products/**,/categories/**
+          filters:
+            - StripPrefix=0 # This configuration can be ignored. Just note that you can modify the access path.
+        - id: inventory-service
+          uri: http://localhost:8280
+          predicates:
+            - Path=/inventories/**
+        - id: order-service
+          uri: http://localhost:8380
+          predicates:
+            - Path=/orders/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

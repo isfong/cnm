@@ -19,6 +19,7 @@
 		<module>eventuate-tram-spring-boot-starter</module>
 
 		<module>cnm-shared-model</module>
+		<module>cnm-api-gateway-service</module>
 		<module>cnm-product-service</module>
 		<module>cnm-product-service-sdk</module>
 		<module>cnm-inventory-service</module>
@@ -33,7 +34,7 @@
 		<embedded.version>1.86</embedded.version>
 		<cucumber.version>6.9.1</cucumber.version>
 		<commons-lang.version>2.6</commons-lang.version>
-		<spring-cloud.version>2020.0.0-M4</spring-cloud.version>
+		<spring-cloud.version>2020.0.0-M5</spring-cloud.version>
 		<jib-maven-plugin.version>2.7.1</jib-maven-plugin.version>
 		<eventuate-tram.version>0.26.1.RELEASE</eventuate-tram.version>
 		<groovy-maven-plugin.version>2.1.1</groovy-maven-plugin.version>
