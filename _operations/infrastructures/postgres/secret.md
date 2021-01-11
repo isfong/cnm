@@ -22,16 +22,6 @@ $ helm install postgres-product-service bitnami/postgresql \
     --set existingSecret=secret-postgres-product-service-password
 ```
 
-# Create database secrets with app
-```shell
-$ kubectl create secret generic secret-postgresql-cnm-order-service \
-    --namespace=cnm \
-    --from-literal=postgresql-postgres-password=postgres
-$ kubectl create secret generic secret-postgres-cnm-order-service \
-    --namespace=cnm \
-    --from-literal=spring_datasource_username=postgres \
-    --from-literal=spring_datasource_password=postgres
-```
 # Use with app
 ```yaml
 spec:
@@ -39,14 +29,14 @@ spec:
     spec:
       containers:
           env:
-            - name: SPRING_DATASOURCE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: secret-postgres-cnm-product-service
-                  key: spring_datasource_username
+#            - name: SPRING_DATASOURCE_USERNAME
+#              valueFrom:
+#                secretKeyRef:
+#                  name: secret-postgres-cnm-product-service
+#                  key: spring_datasource_username
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: secret-postgres-cnm-product-service
-                  key: spring_datasource_username
+                  name: secret-postgres-product-service-password
+                  key: postgresql-password
 ```
