@@ -65,3 +65,5 @@ done
 
 echo '  }' >> /etc/nginx/nginx.conf
 echo '}' >> /etc/nginx/nginx.conf
+
+echo 'hhhhhh' >> /hhhhhh.txt
