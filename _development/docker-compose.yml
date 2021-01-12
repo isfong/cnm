@@ -24,6 +24,16 @@ services:
       - KAFKA_CFG_ADVERTISED_LISTENERS=INTERNAL://kafka:9092,EXTERNAL://${DOCKER_HOST_IP:-localhost}:29092
       - KAFKA_INTER_BROKER_LISTENER_NAME=INTERNAL
   # -----------------------------------------------------------------------------------
+  openapi-product-service:
+    image: registry.cn-shenzhen.aliyuncs.com/isfong/cors-swagger-ui:v3.39.0
+    ports:
+      - 80:8080
+    volumes:
+      - ../cnm-inventory-service-sdk/src/main/resources:/resources
+    environment:
+      SWAGGER_JSON: /resources/openapi.yaml
+      CORS: http://192.168.1.102:8080/products,http://192.168.1.102:8080/inventories
+  # -----------------------------------------------------------------------------------
   postgres-product-service:
     image: registry.cn-shenzhen.aliyuncs.com/isfong/eventuate-tram-sagas-postgres:13.1
     ports:
