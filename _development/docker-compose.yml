@@ -29,10 +29,11 @@ services:
     ports:
       - 80:8080
     volumes:
-      - ../cnm-inventory-service-sdk/src/main/resources:/resources
+      - ../cnm-inventory-product-sdk/src/main/resources:/resources
     environment:
       SWAGGER_JSON: /resources/openapi.yaml
-      CORS: http://192.168.1.102:8080/products,http://192.168.1.102:8080/inventories
+      # Automatically intercepts each path proxy to the URI before the path
+      CORS: http://192.168.101.207:8080/products,http://192.168.101.207:8080/inventories
   # -----------------------------------------------------------------------------------
   postgres-product-service:
     image: registry.cn-shenzhen.aliyuncs.com/isfong/eventuate-tram-sagas-postgres:13.1

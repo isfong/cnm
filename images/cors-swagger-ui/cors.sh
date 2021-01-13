@@ -1,4 +1,5 @@
 #!/bin/bash
+
 rm -rf /etc/nginx/nginx.conf
 echo 'worker_processes      1;' >> /etc/nginx/nginx.conf
 echo '' >> /etc/nginx/nginx.conf
@@ -66,4 +67,4 @@ done
 echo '  }' >> /etc/nginx/nginx.conf
 echo '}' >> /etc/nginx/nginx.conf
 
-echo 'hhhhhh' >> /hhhhhh.txt
+echo 'cors ran' >> /cors-ran.txt
