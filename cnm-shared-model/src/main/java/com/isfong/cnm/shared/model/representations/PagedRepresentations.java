@@ -15,11 +15,11 @@ import java.util.stream.Collectors;
 @NoArgsConstructor( access = AccessLevel.PRIVATE )
 @AllArgsConstructor( access = AccessLevel.PRIVATE )
 public class PagedRepresentations< T > {
-    private int total;
+    private long total;
     private int page;
     private List< T > representations;
 
-    public static < T > PagedRepresentations< T > of( int total, int page, List< T > representations ) {
+    public static < T > PagedRepresentations< T > of( long total, int page, List< T > representations ) {
         return new PagedRepresentations<>( total, page, representations );
     }
 

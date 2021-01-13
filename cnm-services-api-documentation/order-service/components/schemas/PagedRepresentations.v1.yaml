@@ -1,0 +1,21 @@
+title: PagedRepresentations
+type: object
+description: Paginated data container
+x-tags:
+  - order
+properties:
+  total:
+    type: integer
+    description: Data total
+    format: int64
+  page:
+    type: integer
+    description: Current page
+  representations:
+    type: array
+    description: Data of orders
+    items:
+      $ref: ./OrderRepresentation.v1.yaml
+required:
+  - page
+  - representations

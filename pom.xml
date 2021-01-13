@@ -18,6 +18,7 @@
 	<modules>
 		<module>eventuate-tram-spring-boot-starter</module>
 
+		<module>cnm-services-api-documentation</module>
 		<module>cnm-shared-model</module>
 		<module>cnm-api-gateway-service</module>
 		<module>cnm-product-service</module>

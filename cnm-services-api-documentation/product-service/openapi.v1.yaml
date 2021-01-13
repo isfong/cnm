@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Product management service API documentation
+  version: '1.0'
+  description: Contains product category related interfaces
+  contact:
+    name: isfong
+    email: isfong@qq.com
+servers:
+  # The address port matches the address port accessed by the swagger-ui container
+  - url: 'http://192.168.101.207:8081/'
+paths:
+  /categories:
+    post:
+      summary: Create a category
+      operationId: createCategory
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/CreateCategoryRepresentation.v1.yaml
+      description: Create a product category
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./components/schemas/CreateCategoryCommand.v1.yaml
+        description: Create the category send command
+      tags:
+        - category
+  '/categories/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: A category ID
+    get:
+      summary: Query a category
+      tags:
+        - category
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/CategoryRepresentation.v1.yaml
+        '404':
+          description: Not Found
+      operationId: getCategory
+      description: Query a category based on the category ID
+  /products:
+    get:
+      summary: Product list query
+      tags:
+        - product
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/PagedRepresentations.v1.yaml
+      operationId: pagedProducts
+      description: Query the list of paging products
+      parameters:
+        - schema:
+            type: integer
+            default: 1
+          in: query
+          name: page
+          description: The page number
+        - schema:
+            type: integer
+            default: 10
+          in: query
+          name: size
+          description: Volume of data per page
+    post:
+      summary: Create a product
+      operationId: createProduct
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/CreateProductRepresentation.v1.yaml
+      description: Creating a product
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./components/schemas/CreateProductCommand.v1.yaml
+        description: Create the product send command
+      tags:
+        - product
+  '/products/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: A target product ID
+    get:
+      summary: Query individual product
+      tags:
+        - product
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/ProductRepresentation.v1.yaml
+        '404':
+          description: Not Found
+      operationId: getProduct
+      description: Query product details by product ID
+  '/products/{id}/name':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: Product ID
+    put:
+      summary: Modify the name of a product
+      operationId: changeProductName
+      responses:
+        '204':
+          description: Changed
+      description: Modify the product name according to the product ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./components/schemas/ChangeProductNameCommand.v1.yaml
+        description: Modify the product name to send the command
+      tags:
+        - product
+components:
+  schemas: {}
+tags:
+  - name: category
+  - name: product

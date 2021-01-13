@@ -1,0 +1,11 @@
+title: IncreaseInventoryCommand
+type: object
+description: Increase inventory send command
+properties:
+  numberOfIncreaseInventory:
+    type: integer
+    description: Increase the quantity
+required:
+  - numberOfIncreaseInventory
+x-tags:
+  - inventory

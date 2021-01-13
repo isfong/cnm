@@ -1,0 +1,11 @@
+title: CreateCategoryRepresentation
+type: object
+description: Create category response message
+properties:
+  id:
+    type: string
+    description: New category ID
+required:
+  - id
+x-tags:
+  - category

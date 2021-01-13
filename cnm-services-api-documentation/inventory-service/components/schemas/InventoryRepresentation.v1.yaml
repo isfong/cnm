@@ -1,0 +1,39 @@
+title: InventoryRepresentation
+type: object
+description: Inventory information
+properties:
+  id:
+    type: integer
+    format: int64
+    description: Inventory ID
+  createdAt:
+    type: integer
+    format: int64
+    description: Created time
+  updatedAt:
+    type: integer
+    format: int64
+    description: Update time
+  version:
+    type: integer
+    format: int64
+    description: Model version
+  productId:
+    type: string
+    description: Product ID
+  productName:
+    type: string
+    description: Product name
+  remains:
+    type: integer
+    description: Inventory of remaining
+required:
+  - id
+  - createdAt
+  - updatedAt
+  - version
+  - productId
+  - productName
+  - remains
+x-tags:
+  - inventory

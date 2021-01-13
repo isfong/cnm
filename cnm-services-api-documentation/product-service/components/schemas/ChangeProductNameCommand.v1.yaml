@@ -1,0 +1,11 @@
+title: ChangeProductNameCommand
+type: object
+x-tags:
+  - product
+description: Send this command to change a product name
+properties:
+  newName:
+    type: string
+    description: New product name
+required:
+  - newName

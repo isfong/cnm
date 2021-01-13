@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Order management service API documentation
+  version: '1.0'
+  description: Order management service
+  contact:
+    name: isfong
+    email: isfong@qq.com
+servers:
+  # The address port matches the address port accessed by the swagger-ui container
+  - url: 'http://192.168.101.207:8083/'
+paths:
+  /orders:
+    get:
+      summary: GET order of paged list
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: ./components/schemas/OrderRepresentation.v1.yaml
+      operationId: getOrders
+      description: orders
+      parameters:
+        - schema:
+            type: integer
+            format: int32
+            default: '"0"'
+          in: query
+          name: page
+          description: number of page
+        - schema:
+            type: integer
+            format: int32
+            default: 10
+          in: query
+          name: size
+          description: number of page size
+    post:
+      summary: Create order
+      operationId: createOrder
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/CreateOrderRepresentation.v1.yaml
+      description: Create a new order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./components/schemas/CreateOrderCommand.v1.yaml
+        description: Create command
+      tags:
+        - order
+  '/orders/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+        description: order ID
+    get:
+      summary: GET order
+      tags:
+        - order
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/OrderRepresentation.v1.yaml
+        '404':
+          description: Order Not Be Found
+      operationId: getOrder
+      description: GET a order by order ID
+components:
+  schemas: {}
+tags:
+  - name: order

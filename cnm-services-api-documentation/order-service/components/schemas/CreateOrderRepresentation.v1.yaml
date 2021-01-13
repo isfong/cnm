@@ -1,0 +1,11 @@
+title: CreateOrderRepresentation
+type: object
+description: Create a new order response
+properties:
+  id:
+    type: string
+    description: The created order ID
+required:
+  - id
+x-tags:
+  - order

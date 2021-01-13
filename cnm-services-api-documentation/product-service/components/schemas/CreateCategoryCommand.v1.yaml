@@ -1,0 +1,15 @@
+title: CreateCategoryCommand
+type: object
+description: Create category command information
+properties:
+  name:
+    type: string
+    description: A category name
+  description:
+    type: string
+    description: A category description
+required:
+  - name
+  - description
+x-tags:
+  - category

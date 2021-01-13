@@ -1,0 +1,24 @@
+title: CategoryRepresentation
+type: object
+x-tags:
+  - category
+description: Product category information
+properties:
+  id:
+    type: string
+    description: ID
+  name:
+    type: string
+    description: category name
+  description:
+    type: string
+    description: category description
+  createdAt:
+    type: integer
+    format: int64
+    description: Created time
+required:
+  - id
+  - name
+  - description
+  - createdAt

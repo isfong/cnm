@@ -79,6 +79,6 @@ public class OrderApplicationService {
                 .map( Order::toRepresentation )
                 .collect( Collectors.toList( ) );
         long count = this.orderRepository.count( );
-        return PagedRepresentations.of( Long.valueOf( count ).intValue( ), page.getPageNumber( ), representations );
+        return PagedRepresentations.of( count, page.getPageNumber( ), representations );
     }
 }

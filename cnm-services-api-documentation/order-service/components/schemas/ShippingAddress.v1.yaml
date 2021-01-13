@@ -1,0 +1,19 @@
+title: ShippingAddress
+type: object
+description: Buyer's address
+x-tags:
+  - order
+properties:
+  province:
+    type: string
+    description: Administrative province
+  city:
+    type: string
+    description: Administrative city
+  detail:
+    type: string
+    description: Detailed address
+required:
+  - province
+  - city
+  - detail

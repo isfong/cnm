@@ -1,0 +1,21 @@
+title: PagedRepresentations
+type: object
+description: Paginated data container
+properties:
+  total:
+    type: integer
+    description: Data total
+    format: int64
+  page:
+    type: integer
+    description: Current page
+  representations:
+    type: array
+    description: Data of products
+    items:
+      $ref: ./ProductRepresentation.v1.yaml
+required:
+  - page
+  - representations
+x-tags:
+  - product

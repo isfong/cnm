@@ -1,0 +1,11 @@
+title: CreateProductRepresentation
+type: object
+description: Create product response information
+x-tags:
+  - product
+properties:
+  id:
+    type: string
+    description: ID of the new product
+required:
+  - id

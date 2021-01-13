@@ -1,0 +1,48 @@
+title: OrderRepresentation
+type: object
+description: Order info
+x-tags:
+  - order
+properties:
+  id:
+    type: string
+    description: A order ID
+  createdAt:
+    type: integer
+    format: int64
+    description: Created time
+  updatedAt:
+    type: integer
+    format: int64
+    description: Updated time
+  version:
+    type: integer
+    format: int64
+    description: The order updating count version
+  totalPrice:
+    type: number
+    format: double
+    description: The order total price
+  state:
+    type: string
+    enum:
+      - APPROVAL_PENDING
+      - APPROVAL
+      - REJECTED
+    description: Order states
+  items:
+    description: order line item list
+    type: array
+    items:
+      $ref: ./OrderItemRepresentation.v1.yaml
+  address:
+    $ref: ./ShippingAddress.v1.yaml
+required:
+  - id
+  - createdAt
+  - updatedAt
+  - version
+  - totalPrice
+  - state
+  - items
+  - address

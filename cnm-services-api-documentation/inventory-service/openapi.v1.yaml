@@ -1,0 +1,89 @@
+openapi: 3.0.0
+info:
+  title: Inventory management service API documentation
+  version: '1.0'
+  description: Management inventory of products
+  contact:
+    name: isfong
+    email: isfong@qq.com
+servers:
+  # The address port matches the address port accessed by the swagger-ui container
+  - url: 'http://192.168.101.207:8082/'
+paths:
+  '/inventories/{id}':
+    parameters:
+      - schema:
+          type: integer
+          format: int64
+        name: id
+        in: path
+        required: true
+        description: Inventory ID
+    get:
+      summary: Query the inventory
+      tags:
+        - inventory
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/InventoryRepresentation.v1.yaml
+        '404':
+          description: Not Found
+      operationId: getInventory
+      description: Query the inventory according to the inventory ID
+  '/inventories/{id}/increase':
+    parameters:
+      - schema:
+          type: integer
+          format: int64
+        name: id
+        in: path
+        required: true
+        description: Inventory ID
+    post:
+      summary: Increase inventory
+      operationId: increaseInventory
+      responses:
+        '204':
+          description: Inventory increased
+        '404':
+          description: Target Inventory Not Found
+      description: Increase the inventory according to the inventory ID
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: ./components/schemas/IncreaseInventoryCommand.v1.yaml
+      tags:
+        - inventory
+  '/inventories/with-product/{productId}':
+    parameters:
+      - schema:
+          type: string
+        name: productId
+        in: path
+        required: true
+        description: Product ID
+    get:
+      summary: Query a product inventory
+      tags:
+        - inventory
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: ./components/schemas/InventoryRepresentation.v1.yaml
+              examples: {}
+        '404':
+          description: Not Found
+      operationId: getInventoryWithProduct
+      description: Inventory query based on product ID
+components:
+  schemas: {}
+tags:
+  - name: inventory

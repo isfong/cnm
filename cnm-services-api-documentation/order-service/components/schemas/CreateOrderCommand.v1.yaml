@@ -1,0 +1,16 @@
+title: CreateOrderCommand
+type: object
+description: Create a new Order send this command
+x-tags:
+  - order
+properties:
+  items:
+    type: array
+    description: New order detial items
+    items:
+      $ref: ./CreateOrderItemCommand.v1.yaml
+  address:
+    $ref: ./ShippingAddress.v1.yaml
+required:
+  - items
+  - address
