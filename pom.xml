@@ -21,6 +21,8 @@
 		<module>cnm-services-api-documentation</module>
 		<module>cnm-shared-model</module>
 		<module>cnm-api-gateway-service</module>
+		<module>cnm-access-identities-service</module>
+		<module>cnm-access-identities-service-sdk</module>
 		<module>cnm-product-service</module>
 		<module>cnm-product-service-sdk</module>
 		<module>cnm-inventory-service</module>
@@ -50,6 +52,11 @@
 			<dependency>
 				<groupId>com.isfong.cnm</groupId>
 				<artifactId>cnm-shared-model</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.isfong.cnm</groupId>
+				<artifactId>cnm-access-identities-service-sdk</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
