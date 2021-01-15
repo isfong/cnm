@@ -62,7 +62,7 @@ fi
 
 find $NGINX_ROOT -type f -regex ".*\.\(html\|js\|css\)" -exec sh -c "gzip < {} > {}.gz" \;
 
-#if [[ -n "$CORS" ]]; then
-#  /bin/cors.sh
-#fi
+if [[ -n "$CORS" ]]; then
+  /bin/cors.sh
+fi
 exec nginx -g 'daemon off;'

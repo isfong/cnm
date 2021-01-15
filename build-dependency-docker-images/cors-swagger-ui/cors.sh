@@ -39,7 +39,7 @@ echo '      expires 1d;' >> /etc/nginx/nginx.conf
 echo '' >> /etc/nginx/nginx.conf
 echo '      location ~* \.(?:json|yml|yaml)$ {' >> /etc/nginx/nginx.conf
 nginx_root=$(cat /etc/nginx/nginx.conf | grep 'root')
-echo $nginx_root >> /etc/nginx/nginx.conf
+echo "        ${nginx_root}" >> /etc/nginx/nginx.conf
 echo '        expires -1;' >> /etc/nginx/nginx.conf
 echo '' >> /etc/nginx/nginx.conf
 echo '        include cors.conf;' >> /etc/nginx/nginx.conf
