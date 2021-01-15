@@ -33,7 +33,9 @@ services:
     environment:
       SWAGGER_JSON: /resources/openapi.v1.yaml
       # Automatically intercepts each path proxy to the URI before the path
-      CORS: http://192.168.101.207:8080/products,http://192.168.101.207:8080/categories
+      CORS: >-
+        http://192.168.101.207:8080/products,
+        http://192.168.101.207:8080/categories
   # -----------------------------------------------------------------------------------
   openapi-inventory-service:
     image: registry.cn-shenzhen.aliyuncs.com/isfong/cors-swagger-ui:v3.39.0
@@ -44,7 +46,8 @@ services:
     environment:
       SWAGGER_JSON: /resources/openapi.v1.yaml
       # Automatically intercepts each path proxy to the URI before the path
-      CORS: http://192.168.101.207:8080/inventories
+      CORS: >-
+        http://192.168.101.207:8080/inventories
   # -----------------------------------------------------------------------------------
   openapi-order-service:
     image: registry.cn-shenzhen.aliyuncs.com/isfong/cors-swagger-ui:v3.39.0
@@ -55,7 +58,8 @@ services:
     environment:
       SWAGGER_JSON: /resources/openapi.v1.yaml
       # Automatically intercepts each path proxy to the URI before the path
-      CORS: http://192.168.101.207:8080/orders
+      CORS: >-
+        http://192.168.101.207:8080/orders
   # -----------------------------------------------------------------------------------
   postgres-product-service:
     image: registry.cn-shenzhen.aliyuncs.com/isfong/eventuate-tram-sagas-postgres:13.1
