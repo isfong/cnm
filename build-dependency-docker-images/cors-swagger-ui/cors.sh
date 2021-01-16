@@ -1,7 +1,8 @@
 #!/bin/bash
 
 corsUrls=${CORS//,/ }
-line=46
+line=$(more /etc/nginx/nginx.conf | wc -l)
+let line=line-1
 for corsUrl in $corsUrls; do
     pathArray=(${corsUrl//\// })
     index=0
