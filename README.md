@@ -1,9 +1,19 @@
 # Cloud Native Microservices (CNM)
 
 ### Reference Documentation
-For further reference, please consider the following sections:
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.4.1/maven-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.4.1/maven-plugin/reference/html/#build-image)
+* Cloud Native( k8s & istio) micro services
+* Domain Driven Design
+* Eventuate Tram core/sagas
+* OCI image
+* OpenAPI (Swagger UI)
+* CQRS
+
+### Summaries
+
+* `cnm-access-identities-service` Access and identity service
+* `cnm-api-gateway-service`  Spring cloud gateway api service
+* `cnm-inventory-service` Inventory Management Services
+* `cnm-order-service` Order Management Services
+* `cnm-product-servicee` Product Management Services
 
